@@ -6,6 +6,8 @@
 [![Hermes Agent](https://img.shields.io/badge/Hermes-Agent-blue)](https://hermes-agent.nousresearch.com)
 [![NapCatQQ](https://img.shields.io/badge/NapCat-OneBot%20v11-green)](https://github.com/NapNeko/NapCatQQ)
 
+> 🌟 **新手朋友请直接看这里 →** [**📖 30分钟保姆级部署教程**](docs/QUICKSTART.md)
+
 ---
 
 ## 这是什么？
