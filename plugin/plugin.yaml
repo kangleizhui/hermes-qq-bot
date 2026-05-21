@@ -1,0 +1,48 @@
+name: napcat-platform
+label: NapCat (QQ)
+kind: platform
+version: 1.0.0
+description: >
+  NapCat (OneBot v11) gateway adapter for Hermes Agent.
+  Connects to a NapCatQQ instance via OneBot v11 WebSocket + HTTP API,
+  enabling Hermes to act on a real QQ account — receive private chats and
+  group messages, distinguish users by real QQ number / UID, and reply.
+author: Xiao Ai (built for 林知予)
+requires_env:
+  - name: NAPCAT_WS_URL
+    description: "OneBot v11 WebSocket Server URL (e.g. ws://127.0.0.1:3001)"
+    prompt: "NapCat WebSocket URL"
+    password: false
+  - name: NAPCAT_HTTP_URL
+    description: "OneBot v11 HTTP API URL (e.g. http://127.0.0.1:3000)"
+    prompt: "NapCat HTTP API URL"
+    password: false
+  - name: NAPCAT_ACCESS_TOKEN
+    description: "Access token configured in NapCat OneBot settings"
+    prompt: "NapCat access token"
+    password: true
+optional_env:
+  - name: NAPCAT_SELF_ID
+    description: "Bot's own QQ number (auto-detected from lifecycle event if blank)"
+    prompt: "Bot QQ number (optional)"
+    password: false
+  - name: NAPCAT_ALLOWED_USERS
+    description: "Comma-separated QQ numbers allowed to DM the bot"
+    prompt: "Allowed user QQs (comma-separated)"
+    password: false
+  - name: NAPCAT_ALLOW_ALL_USERS
+    description: "Allow all users to interact (dev only, default: false)"
+    prompt: "Allow all users? (true/false)"
+    password: false
+  - name: NAPCAT_ALLOWED_GROUPS
+    description: "Comma-separated group numbers where the bot responds"
+    prompt: "Allowed group numbers"
+    password: false
+  - name: NAPCAT_GROUP_RESPOND_ONLY_AT_ME
+    description: "Only respond in groups when @-mentioned (default: true)"
+    prompt: "Only respond when @ed in groups? (true/false)"
+    password: false
+  - name: NAPCAT_HOME_CHANNEL
+    description: "Default chat for cron / notification delivery (format: 'user:QQ' or 'group:GroupNumber')"
+    prompt: "Home channel (e.g. user:10001 or group:123456)"
+    password: false

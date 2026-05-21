@@ -1,0 +1,19 @@
+[Unit]
+Description=NapCatQQ - QQ OneBot v11 Adapter for 林知予
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/Napcat
+ExecStart=/usr/bin/xvfb-run -a /root/Napcat/opt/QQ/qq --no-sandbox -q 3531314097
+Restart=on-failure
+RestartSec=10
+StandardOutput=append:/var/log/napcat.log
+StandardError=append:/var/log/napcat.log
+KillMode=control-group
+TimeoutStopSec=15
+
+[Install]
+WantedBy=multi-user.target
