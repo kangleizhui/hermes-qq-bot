@@ -16,8 +16,8 @@
 **新手友好的服务器选择**：
 | 厂商 | 价格 | 推荐链接 |
 |------|------|----------|
-| **腾讯云轻量** | 约 ¥80/年（学生）| https://cloud.tencent.com/act/pro/lighthouse |
-| **阿里云轻量** | 约 ¥90/年（新用户）| https://www.aliyun.com/product/swas |
+| **腾讯云轻量** | 约 ¥80/年（学生）| https://curl.qcloud.com/OY40dfNL |
+| **阿里云轻量** | 约 ¥90/年（新用户）| https://www.aliyun.com/daily-act/ecs/activity_selection?userCode=wm2cldg2 |
 | **雨云** | ¥3/月起 | https://www.rainyun.com |
 
 > ⚠️ 别买国内服务器装 QQ 机器人没问题，但**装 Hermes 需要访问外网 AI**，所以最好选**境外节点**（香港/日本/新加坡）或者配好 VPN。
