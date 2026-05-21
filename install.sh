@@ -22,17 +22,46 @@ command -v hermes >/dev/null 2>&1 || { echo -e "${RED}❌ Hermes Agent 未安装
 command -v xvfb-run >/dev/null 2>&1 || { echo "安装 xvfb..."; sudo apt-get update && sudo apt-get install -y xvfb; }
 echo -e "${GREEN}  ✓ 依赖检查完成${NC}"
 
-# 2. 收集配置
+# 2. 收集配置（支持环境变量预设，方便 agent/无人值守部署）
 echo ""
 echo -e "${YELLOW}[2/7] 配置 QQ 机器人...${NC}"
-read -p "  机器人 QQ 号 (用来登录的小号): " BOT_QQ
-read -p "  你的 QQ 号 (主人，将拥有完整权限): " OWNER_QQ
-read -p "  默认接收消息的 QQ 群号 (留空表示不进群): " HOME_GROUP
-read -p "  OneBot Access Token (随便编一串，越长越安全): " ACCESS_TOKEN
-read -p "  允许使用工具的用户白名单 (逗号分隔，留空仅主人): " WHITELIST_USERS
-read -p "  允许使用工具的群白名单 (逗号分隔，留空表示无): " WHITELIST_GROUPS
+
+# 如果环境变量没设置，再走交互式询问
+if [ -z "$BOT_QQ" ]; then read -p "  机器人 QQ 号 (用来登录的小号): " BOT_QQ; fi
+if [ -z "$OWNER_QQ" ]; then read -p "  你的 QQ 号 (主人，将拥有完整权限): " OWNER_QQ; fi
+if [ -z "$HOME_GROUP" ] && [ "${HOME_GROUP+set}" != "set" ]; then
+    read -p "  默认接收消息的 QQ 群号 (留空表示不进群): " HOME_GROUP
+fi
+if [ -z "$ACCESS_TOKEN" ]; then
+    # agent 模式：自动生成随机 token
+    if [ -n "$NONINTERACTIVE" ]; then
+        ACCESS_TOKEN=$(openssl rand -hex 16 2>/dev/null || head -c 32 /dev/urandom | base64 | tr -d '/+=' | head -c 32)
+        echo "  自动生成 token: $ACCESS_TOKEN"
+    else
+        read -p "  OneBot Access Token (随便编一串，越长越安全): " ACCESS_TOKEN
+    fi
+fi
+if [ -z "$WHITELIST_USERS" ] && [ "${WHITELIST_USERS+set}" != "set" ]; then
+    if [ -n "$NONINTERACTIVE" ]; then
+        WHITELIST_USERS="$OWNER_QQ"
+    else
+        read -p "  允许使用工具的用户白名单 (逗号分隔，留空仅主人): " WHITELIST_USERS
+    fi
+fi
+if [ -z "$WHITELIST_GROUPS" ] && [ "${WHITELIST_GROUPS+set}" != "set" ]; then
+    if [ -z "$NONINTERACTIVE" ]; then
+        read -p "  允许使用工具的群白名单 (逗号分隔，留空表示无): " WHITELIST_GROUPS
+    fi
+fi
 
 WHITELIST_USERS="${WHITELIST_USERS:-$OWNER_QQ}"
+
+# 必填校验
+if [ -z "$BOT_QQ" ] || [ -z "$OWNER_QQ" ]; then
+    echo -e "${RED}❌ BOT_QQ 和 OWNER_QQ 必填${NC}"
+    echo "  用法: BOT_QQ=12345 OWNER_QQ=67890 NONINTERACTIVE=1 bash install.sh"
+    exit 1
+fi
 
 # 3. 安装 NapCatQQ
 echo ""

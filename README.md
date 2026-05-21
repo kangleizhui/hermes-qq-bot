@@ -10,6 +10,25 @@
 
 ---
 
+## ⚡ 最懒部署：让 AI 帮你装
+
+**如果你也在用 Hermes Agent / Claude Code / OpenClaude / Cursor 等 AI 编程助手**，直接把这段话发给它：
+
+```
+帮我把这个项目部署到我的服务器上：
+https://github.com/kangleizhui/hermes-qq-bot
+
+按照仓库根目录的 AGENTS.md 操作。
+```
+
+AI 会自己读 [AGENTS.md](AGENTS.md)，问你 QQ 号、跑安装脚本、提示你扫码、自动验证 —— 全程你只需要：
+1. 给它两个 QQ 号（机器人小号 + 你的主号）
+2. 拿手机扫一下码
+
+⚠️ 前提：你的服务器上已经装好了 Hermes Agent 并配好了 AI。没装的话也直接告诉 AI：「先帮我装 Hermes Agent 再部署 hermes-qq-bot」。
+
+---
+
 ## 这是什么？
 
 把你常用的 QQ 号（或者一个新申请的小号）变成一个 **拥有真正 AI 大脑** 的机器人 —— 它能：
