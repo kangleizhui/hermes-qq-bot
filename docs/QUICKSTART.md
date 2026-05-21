@@ -18,7 +18,6 @@
 |------|------|----------|
 | **腾讯云轻量** | 约 ¥80/年（学生）| https://curl.qcloud.com/OY40dfNL |
 | **阿里云轻量** | 约 ¥90/年（新用户）| https://www.aliyun.com/daily-act/ecs/activity_selection?userCode=wm2cldg2 |
-| **雨云** | ¥3/月起 | https://www.rainyun.com |
 
 > ⚠️ 别买国内服务器装 QQ 机器人没问题，但**装 Hermes 需要访问外网 AI**，所以最好选**境外节点**（香港/日本/新加坡）或者配好 VPN。
 
@@ -27,7 +26,7 @@
 机器人的"大脑"需要 AI 提供，二选一：
 
 **推荐 A：火山引擎方舟（国内可用，便宜）** ⭐
-- 注册：https://www.volcengine.com/product/ark
+- 注册：https://www.volcengine.com/activity/codingplan?ac=MMAP8JTTCAQ2&rc=WPLFDN5Q
 - Coding Plan 套餐：¥30/月起，包月不限量
 - 适合中国大陆服务器
 
